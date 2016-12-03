@@ -1,0 +1,31 @@
+(require 'package)
+
+;;; Standard package repositories
+
+;; We include the org repository for completeness, but don't normally
+;; use it.
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+
+;;; Also use Melpa for most packages
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
+
+
+;;;(set-background-color "black")
+;;;(set-foreground-color "white")
+;;;(set-face-foreground 'region "green")
+;;;(set-face-background 'region "blue")
+
+;;color setting
+(add-to-list 'load-path "~/.emacs.d/lisp/colorTheme")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-classic)
+
+(setq-default indent-tabs-mode nil);;use tab as space
+(setq tab-width:4)
+
+;;org-mode setting
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
+
