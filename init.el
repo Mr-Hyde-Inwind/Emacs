@@ -1,6 +1,18 @@
+;;;;------------------------------load-path------------------------------
+
 (add-to-list 'load-path "~/.emacs.d/lisp/colorTheme")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/packages")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20161029.643")
+;;;------------------------------插件安装源Melpa------------------------
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
 
 ;;;;------------------------------界面优化------------------------------
 
@@ -36,6 +48,13 @@
 ;;启动shell
 (global-set-key (kbd "C-c s") 'shell)
 
+;;winner-mode
+(setq winner-dont-bind-my-keys t)
+(winner-mode t)
+(global-set-key (kbd "C-x 4 u") 'winner-undo)
+(global-set-key (kbd "C-x 4 r") 'winner-redo)
+
+
 ;;;;-------------------------插件----------------------------------------
 
 ;;;window-numbering 窗口快速切换 M-number
@@ -52,3 +71,9 @@
 ;;;(global-set-key (kbd "M-x") 'smex-major-mode-commands)
 ;;旧M-x的绑定
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;;;Auto-Complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20161029.643/dict")
+(ac-config-default)
+
